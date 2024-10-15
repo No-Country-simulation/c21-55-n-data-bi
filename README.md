@@ -1,8 +1,8 @@
 # c21-55-n-data-bi
-Equipo Data
-**Tema:** Análisis de Rendimiento Académico
-**Descripción del Proyecto:** Analizar el rendimiento académico de estudiantes en una institución educativa utilizando datos de calificaciones, asistencia y participación en actividades extracurriculares.
-**Participantes:** Lorena Maza https://www.linkedin.com/in/lorena-maza/
+* Equipo Data
+* **Tema:** Análisis de Rendimiento Académico
+* **Descripción del Proyecto:** Analizar el rendimiento académico de estudiantes en una institución educativa utilizando datos de calificaciones, asistencia y participación en actividades extracurriculares.
+* **Participantes:** Lorena Maza https://www.linkedin.com/in/lorena-maza/
 
 ## Inicio del proyecto
 Luego de una búsqueda exhaustiva, sin éxito, de un set de datos para comenzar el análisis, decidí generar datos aleatorios con base en un set que contenía información acerca de las Universidades Argentinas que dictan Carreras Culturales.
@@ -16,5 +16,5 @@ Tras la importación de los datos al Excel:
 *	se estandarizó la duración de las carreras, puesto que en algunos casos venía expresada en cuatrimestres y en otro en años. Se optó por años;
 *	se cambiaron los Identificadores de INT a VARCHAR, realizando la correspondiente modificación de todos los valores
 
-##NORMALIZACIÓN
+## NORMALIZACIÓN
 El DataSet se trabaja en Microsoft Excel para normalizar la tabla original, separando los datos en distintas hojas:
