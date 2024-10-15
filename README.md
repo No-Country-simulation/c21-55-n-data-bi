@@ -4,7 +4,7 @@
 * **Descripción del Proyecto:** Analizar el rendimiento académico de estudiantes en una institución educativa utilizando datos de calificaciones, asistencia y participación en actividades extracurriculares.
 * **Participantes:** Lorena Maza https://www.linkedin.com/in/lorena-maza/
 
-## Inicio del proyecto
+## INICIO DEL PROYECTO
 Luego de una búsqueda exhaustiva, sin éxito, de un set de datos para comenzar el análisis, decidí generar datos aleatorios con base en un set que contenía información acerca de las Universidades Argentinas que dictan Carreras Culturales.
 El DataSet original puede descargarse de https://datos.cultura.gob.ar/dataset/agentes-culturales-argentina/archivo/558d9a3c-6b9f-4f20-8605-d22c0398e4c1
 
@@ -18,3 +18,14 @@ Tras la importación de los datos al Excel:
 
 ## NORMALIZACIÓN
 El DataSet se trabaja en Microsoft Excel para normalizar la tabla original, separando los datos en distintas hojas:
+* DatosUniversidades: IDUniversidad: IDFacultad; Domicilio; CP; IDLocalidad; Latitud; Longitud; IDGestion; Web; E-Mail
+* Titulos: IDTitulo; Titulo; IDNivel; IDUniversidad; IDFacultad; IDModalidad; Duración; Vigencia; IDTematica; FechaActualizacion
+* Facultades: IDFacultad; Facultad
+* Universidades: IDUniversidad; Universidad
+* Niveles: IDNivel; Nivel
+* Gestion: IDGestion; TipoGestion
+* Modalidades: IDModalidad; TipoModalidad
+* Tematicas: IDTematica; Temática
+* Provincias: IDProvincia; Provincia
+* Departamentos: IDProvincia; IDDepartamento; Departamento
+* Localidades: IDDepartamento; IDProvincia; IDLocalidad; Localidad
