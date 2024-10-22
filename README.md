@@ -35,12 +35,15 @@ Para complementar la información sobre las instituciones, generé una lista de 
 Solicitando como Campos: DNI; Nombre; Apellido; Edad (Se adjunta imagen de la configuración de campos).
 
 Dicho Set se adjunta a los datos trabajados anteriormente, incorporando la tabla Alumnos. A continuación, en Excel se generan nuevos campos en esta tabla:
+*Género: generaro a partir de =INDICE(Genero;ALEATORIO.ENTRE(1;2)). Donde Género es: Masculino y Femenino
 * IDTítulo: generado a partir de =Indice(IDTitulos;Aleatorio.entre(1;Contar(IDTitulos)))
 * Duración: generado a partir de =BUSCARV(E2;Titulos!$A$1:$J$1477;8;0)
-* Permanencia: generado a partir de =Aleatorio.entre(1;10)
-* Cant_Materias: generado a partir de =Redondear.mas(duracion*7;0)
+* Permanencia: generado a partir de =ALEATORIO.ENTRE(1;SI((D2-18)<10;(D2-18);10)) (Se evalúa la edad para mantener una concorancia entre la permanencia y la edad del alumno)
+* Cant_Materias: generado a partir de =Redondear.mas(duracion*7;0). Se establece de manera genérica que cada año de cursada tiene 7 materias.
 * Materias_Cursadas: generado a partir de =SI(J2="Adeuda Tesis";H2;SI(O(J2="Continúa";J2="Abandonó");ALEATORIO.ENTRE(1;H2-1);H2+1))
-* Estado: generado a partir de =SI((G2-F2)<0;"Abandonó";Si(G2=F2;Indice(Estados;Aleatorio.entre(1;3));Indice(Estados;Aleatorio.entre(1;4))))
+* Estado: generado a partir de =SI((G2-F2)<0;"Abandonó";Si(G2=F2;Indice(Estados;Aleatorio.entre(1;3));Indice(Estados;Aleatorio.entre(1;4)))). Donde Estados es: Abandonó, Continúa, Adeuda Tesis, Recibido
+* Jornada Laboral: generado a partir de =INDICE(jornada;ALEATORIO.ENTRE(1;3)). Donde Jornada es: No trabaja, Part-time, Full-Time
+* Hijos: generado a partir de =INDICE(hijos;ALEATORIO.ENTRE(1;2)) Donde Hijos es: Sí, No
 
 ## LINEAS A CONTINUAR
 * Se podría agregar un listado de materias por Carrera y asociar la cursada de cada alumnos con sus notas para tener una variable más del rendimiento
