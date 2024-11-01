@@ -1,19 +1,12 @@
 # c21-55-n-data-bi
 * Equipo Data
 * **Tema:** Análisis de Rendimiento Académico
-* **Descripción del Proyecto:** Analizar el rendimiento académico de estudiantes en una institución educativa utilizando datos de calificaciones, asistencia y participación en actividades extracurriculares.
+* **Descripción del Proyecto:** Analizar el rendimiento académico de los estudiantes Universitarios de Carreras Culturales en Argentina, basados en la el estado alcanzado, la permanencia y la duración de las carreras.
 * **Participantes:** Lorena Maza https://www.linkedin.com/in/lorena-maza/
 
 ## INICIO DEL PROYECTO
 Luego de una búsqueda exhaustiva, sin éxito, de un set de datos para comenzar el análisis, decidí generar datos aleatorios con base en un set que contenía información acerca de las Universidades Argentinas que dictan Carreras Culturales.
 El DataSet original puede descargarse de https://datos.cultura.gob.ar/dataset/agentes-culturales-argentina/archivo/558d9a3c-6b9f-4f20-8605-d22c0398e4c1
-
-### Descripción del Proyecto: 
-Analizar el rendimiento académico de los estudiantes Universitarios de Carreras Culturales en Argentina, basados en la el estado alcanzado, la permanencia y la duración de las carreras.
-
-### Interrogantes
-* ¿Por qué la tasa de graduados es tan baja respecto de las inscripciones?
-* ¿Cómo se puede mejorar esta problemática?
 
 ## IMPORTACIÓN DE DATOS A EXCEL
 Tras la importación de los datos al Excel:
@@ -56,7 +49,32 @@ Dicho Set se vincula a los datos trabajados anteriormente, incorporando la tabla
 Luego de la normalización y depuración, se procede a importar los archivos xlsx a Power Bi.
 Se corrigen los títulos y Tipos de datos para que sean concordantes con el análisis que se llevará a cabo.
 
-
 ### ESTRUCTURA DEL DASHBOARD
 Se establece un orden jerárquico de la información desde lo más global a lo más específico, arribando paulatinamente a las conclusiones.
 Para facilitar la navegación, se crea un menú de acceso y botones de navegación.
+
+### Interrogantes
+* ¿Por qué la tasa de graduados es tan baja respecto de las inscripciones?
+* ¿Cómo se puede mejorar esta problemática?
+
+### MEDIDAS CREADAS
+* Total_Universidades = DISTINCTCOUNT(Titulos[IDUniversidad])
+* Total_Facultades = DISTINCTCOUNT(Titulos[IDFacultad])
+* Total_Titulos = DISTINCTCOUNT(Titulos[IDTitulo])
+* Promedio_Duracion = AVERAGE(Titulos[Duracion])
+* Estado_Abandono = CALCULATE(COUNT(Alumnos[DNI]),Alumnos[Estado]="Abandonó") + 0
+* Estado_Continua = CALCULATE(COUNT(Alumnos[DNI]),Alumnos[Estado]="Continúa") + 0
+* Estado_AdeudaTesis = CALCULATE(COUNT(Alumnos[DNI]),Alumnos[Estado]="Adeuda Tesis") + 0
+* Estado_Recibido = CALCULATE(COUNT(Alumnos[DNI]),Alumnos[Estado]="Recibido") + 0
+* Estados = SELECTEDVALUE(Alumnos[Estado])
+* Porcentajes = 
+  var _Estados = SELECTEDVALUE(Alumnos[Estado])
+  RETURN
+  CALCULATE(COUNT(Alumnos[DNI]),Alumnos[Estado]=_Estados
+            )*100/CALCULATE(COUNT(Alumnos[DNI]),ALL(Alumnos[Estado]))
+* Moda_Permanencia = 
+  var grupos = SUMMARIZE(Alumnos, Alumnos[Permanencia] , "Total" , COUNTROWS(Alumnos) )
+  var maximo = MAXX(grupos , [total])
+  var modas = filter(grupos, [total] = maximo)
+  RETURN
+  CONCATENATEX(modas, Alumnos[Permanencia] , "/" )
