@@ -8,6 +8,13 @@
 Luego de una búsqueda exhaustiva, sin éxito, de un set de datos para comenzar el análisis, decidí generar datos aleatorios con base en un set que contenía información acerca de las Universidades Argentinas que dictan Carreras Culturales.
 El DataSet original puede descargarse de https://datos.cultura.gob.ar/dataset/agentes-culturales-argentina/archivo/558d9a3c-6b9f-4f20-8605-d22c0398e4c1
 
+### Descripción del Proyecto: 
+Analizar el rendimiento académico de los estudiantes Universitarios de Carreras Culturales en Argentina, basados en la el estado alcanzado, la permanencia y la duración de las carreras.
+
+### Interrogantes
+* ¿Por qué la tasa de graduados es tan baja respecto de las inscripciones?
+* ¿Cómo se puede mejorar esta problemática?
+
 ## IMPORTACIÓN DE DATOS A EXCEL
 Tras la importación de los datos al Excel:
 *	se corrigieron los caracteres especiales para su correcta visualización. Por ejemplo se transformó Ã­ en í;
@@ -34,8 +41,8 @@ El DataSet se trabaja en Microsoft Excel para normalizar la tabla original, sepa
 Para complementar la información sobre las instituciones, generé una lista de datos de alumnos utilizando la versión Free de https://www.mockaroo.com/schemas/new (1000 registros)
 Solicitando como Campos: DNI; Nombre; Apellido; Edad (Se adjunta imagen de la configuración de campos).
 
-Dicho Set se adjunta a los datos trabajados anteriormente, incorporando la tabla Alumnos. A continuación, en Excel se generan nuevos campos en esta tabla:
-*Género: generaro a partir de =INDICE(Genero;ALEATORIO.ENTRE(1;2)). Donde Género es: Masculino y Femenino
+Dicho Set se vincula a los datos trabajados anteriormente, incorporando la tabla Alumnos. A continuación, en Excel se generan nuevos campos en esta tabla:
+* Género: generaro a partir de =INDICE(Genero;ALEATORIO.ENTRE(1;2)). Donde Género es: Masculino y Femenino
 * IDTítulo: generado a partir de =Indice(IDTitulos;Aleatorio.entre(1;Contar(IDTitulos)))
 * Duración: generado a partir de =BUSCARV(E2;Titulos!$A$1:$J$1477;8;0)
 * Permanencia: generado a partir de =ALEATORIO.ENTRE(1;SI((D2-18)<10;(D2-18);10)) (Se evalúa la edad para mantener una concorancia entre la permanencia y la edad del alumno)
@@ -45,6 +52,11 @@ Dicho Set se adjunta a los datos trabajados anteriormente, incorporando la tabla
 * Jornada Laboral: generado a partir de =INDICE(jornada;ALEATORIO.ENTRE(1;3)). Donde Jornada es: No trabaja, Part-time, Full-Time
 * Hijos: generado a partir de =INDICE(hijos;ALEATORIO.ENTRE(1;2)) Donde Hijos es: Sí, No
 
-## LINEAS A CONTINUAR
-* Se podría agregar un listado de materias por Carrera y asociar la cursada de cada alumnos con sus notas para tener una variable más del rendimiento
-* O se podría dejar en el estado actual y llevar los datos a Locker Studio para iniciar el análisis y visualización
+## IMPORTACIÓN A POWER BI
+Luego de la normalización y depuración, se procede a importar los archivos xlsx a Power Bi.
+Se corrigen los títulos y Tipos de datos para que sean concordantes con el análisis que se llevará a cabo.
+
+
+### ESTRUCTURA DEL DASHBOARD
+Se establece un orden jerárquico de la información desde lo más global a lo más específico, arribando paulatinamente a las conclusiones.
+Para facilitar la navegación, se crea un menú de acceso y botones de navegación.
